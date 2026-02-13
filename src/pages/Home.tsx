@@ -7,34 +7,34 @@ export default function Home() {
     return (
         <>
             <SEO
-                title="Local Private LLM Email Client | Inboxed"
-                description="Inboxed is a local private LLM email client that works offline, respects privacy, and replaces cloud AI email tools."
+                title="Private AI Email Client for Mac | Local LLM | Inboxed"
+                description="Inboxed is the premier private email client for macOS. Run on-device AI for email summarization and triage without the cloud. Secure, offline, and fast."
                 schemas={[
                     {
                         "@context": "https://schema.org",
                         "@type": "SoftwareApplication",
                         "name": "Inboxed",
-                        "description": "A local private LLM email client for macOS that runs AI entirely on-device using Apple MLX and llama.cpp. Supports 7B+ parameter models for email summarization, smart categorization, and inbox triage — all offline.",
+                        "description": "A high-performance private email client for macOS. Inboxed uses local LLMs to provide intelligent features like email summarization and smart categorization entirely on-device using Apple MLX and llama.cpp. Supports 7B+ parameter models offline.",
                         "applicationCategory": "BusinessApplication",
                         "operatingSystem": "macOS",
                         "softwareVersion": "1.0",
                         "fileSize": "10MB",
                         "downloadUrl": "https://inboxed.email",
-                        "featureList": "Local LLM email summarization, Smart inbox categorization, Zero-data-exit privacy, Apple Metal GPU acceleration, IMAP direct fetch, Offline AI processing, macOS Keychain credential storage",
+                        "featureList": "Free Superhuman alternative, Private AI email summarization, Local LLM processing, Offline email client capabilities, Apple Metal GPU acceleration, Secure IMAP fetch, Zero-data-exit privacy",
                         "offers": [
                             {
                                 "@type": "Offer",
                                 "name": "Standard",
                                 "price": "0",
                                 "priceCurrency": "USD",
-                                "description": "Free forever with all AI models, unlimited accounts, and community support"
+                                "description": "Free private email client with local AI models, unlimited accounts, and community support"
                             },
                             {
                                 "@type": "Offer",
                                 "name": "Pro Lifetime",
                                 "price": "1.00",
                                 "priceCurrency": "USD",
-                                "description": "One-time payment for priority support, early access features"
+                                "description": "One-time payment for priority support and early access to new private AI features"
                             }
                         ]
                     },
@@ -97,8 +97,8 @@ export default function Home() {
                             See how we compare
                         </p>
                         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-12 font-body text-lg underline-offset-4">
-                            <Link to="/compare/superhuman" className="hover:underline">vs Superhuman</Link>
-                            <Link to="/compare/zero" className="hover:underline">vs 0.email</Link>
+                            <Link to="/compare/superhuman" className="hover:underline text-black font-bold">Free Superhuman Alternative</Link>
+                            <Link to="/compare/canary-mail" className="hover:underline">vs Canary Mail</Link>
                         </div>
                     </div>
                 </div>

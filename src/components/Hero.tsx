@@ -29,9 +29,9 @@ export default function Hero() {
                     >
                         Your Inbox.
                         <br />
-                        <span className="italic font-normal">Private.</span>
+                        <span className="italic font-normal">Private AI.</span>
                         <br />
-                        Intelligent.
+                        On-Device.
                     </h1>
 
                     {/* Thick Rule */}
@@ -45,12 +45,11 @@ export default function Hero() {
                     >
                         <div className="lg:col-span-5">
                             <p className="font-body text-lg md:text-xl leading-relaxed text-foreground/85">
-                                The first desktop email client powered by a{' '}
+                                Inboxed is the first <span className="font-bold">private email client</span> powered by a{' '}
                                 <span className="font-bold border-b-2 border-black">
                                     Local Private LLM
                                 </span>
-                                . Organize your emails, achieve Zero Inbox, and automate
-                                workflows—all without your data ever leaving your
+                                . Achieve zero inbox with on-device AI summarization—all without your data ever leaving your
                                 device.
                             </p>
                         </div>
