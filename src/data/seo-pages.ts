@@ -1105,39 +1105,40 @@ export function getAllRoutes(): string[] {
   return routes;
 }
 
-export function getAllSitemapEntries(): { loc: string; changefreq: string; priority: string }[] {
+export function getAllSitemapEntries(): { loc: string; lastmod: string }[] {
   const base = "https://inboxed.email";
+  const today = new Date().toISOString().split("T")[0];
   const entries = [
-    { loc: `${base}/`, changefreq: "weekly", priority: "1.0" },
-    { loc: `${base}/best-private-ai-email`, changefreq: "monthly", priority: "0.9" },
-    { loc: `${base}/blog`, changefreq: "weekly", priority: "0.7" },
-    { loc: `${base}/blog/local-ai-email`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/best-ai-email-clients`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/email-privacy-guide`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/inbox-zero-ai`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/best-mac-email-clients`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/superhuman-alternatives`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/developer-mac-email-workflow`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/zero-data-exit-framework`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/block-email-trackers-mac`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/apple-mail-slow-vs-rust-native`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/local-llm-email-drafting-tutorial`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/gmail-privacy-truth`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/on-device-ai-email`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/email-privacy-audit`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/blog/offline-email-clients`, changefreq: "monthly", priority: "0.8" },
-    { loc: `${base}/privacy`, changefreq: "yearly", priority: "0.5" },
-    { loc: `${base}/terms`, changefreq: "yearly", priority: "0.5" },
+    { loc: `${base}/`, lastmod: today },
+    { loc: `${base}/best-private-ai-email`, lastmod: "2026-02-13" },
+    { loc: `${base}/blog`, lastmod: "2026-02-13" },
+    { loc: `${base}/blog/local-ai-email`, lastmod: "2026-01-09" },
+    { loc: `${base}/blog/inbox-zero-ai`, lastmod: "2026-01-12" },
+    { loc: `${base}/blog/email-privacy-guide`, lastmod: "2026-01-15" },
+    { loc: `${base}/blog/best-ai-email-clients`, lastmod: "2026-01-18" },
+    { loc: `${base}/blog/best-mac-email-clients`, lastmod: "2026-01-20" },
+    { loc: `${base}/blog/superhuman-alternatives`, lastmod: "2026-01-22" },
+    { loc: `${base}/blog/developer-mac-email-workflow`, lastmod: "2026-01-24" },
+    { loc: `${base}/blog/zero-data-exit-framework`, lastmod: "2026-01-26" },
+    { loc: `${base}/blog/block-email-trackers-mac`, lastmod: "2026-01-28" },
+    { loc: `${base}/blog/apple-mail-slow-vs-rust-native`, lastmod: "2026-01-30" },
+    { loc: `${base}/blog/local-llm-email-drafting-tutorial`, lastmod: "2026-02-01" },
+    { loc: `${base}/blog/gmail-privacy-truth`, lastmod: "2026-02-04" },
+    { loc: `${base}/blog/on-device-ai-email`, lastmod: "2026-02-06" },
+    { loc: `${base}/blog/email-privacy-audit`, lastmod: "2026-02-10" },
+    { loc: `${base}/blog/offline-email-clients`, lastmod: "2026-02-06" },
+    { loc: `${base}/privacy`, lastmod: "2026-02-10" },
+    { loc: `${base}/terms`, lastmod: "2026-02-10" },
   ];
 
   comparisons.forEach((c) =>
-    entries.push({ loc: `${base}/compare/${c.slug}`, changefreq: "monthly", priority: "0.8" })
+    entries.push({ loc: `${base}/compare/${c.slug}`, lastmod: "2026-02-13" })
   );
   useCases.forEach((u) =>
-    entries.push({ loc: `${base}/best-email-for/${u.slug}`, changefreq: "monthly", priority: "0.8" })
+    entries.push({ loc: `${base}/best-email-for/${u.slug}`, lastmod: "2026-02-13" })
   );
   alternatives.forEach((a) =>
-    entries.push({ loc: `${base}/alternatives/${a.slug}`, changefreq: "monthly", priority: "0.8" })
+    entries.push({ loc: `${base}/alternatives/${a.slug}`, lastmod: "2026-02-13" })
   );
 
   return entries;

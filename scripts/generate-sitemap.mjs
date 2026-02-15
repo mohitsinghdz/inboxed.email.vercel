@@ -30,8 +30,7 @@ ${entries
     .map(
         (e) => `  <url>
     <loc>${e.loc}</loc>
-    <changefreq>${e.changefreq}</changefreq>
-    <priority>${e.priority}</priority>
+    <lastmod>${e.lastmod}</lastmod>
   </url>`
     )
     .join('\n')}
