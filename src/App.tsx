@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -25,6 +25,7 @@ import PostGmailPrivacy from './pages/blog/PostGmailPrivacy';
 import PostOnDeviceAI from './pages/blog/PostOnDeviceAI';
 import PostEmailPrivacyAudit from './pages/blog/PostEmailPrivacyAudit';
 import PostOfflineEmail from './pages/blog/PostOfflineEmail';
+import DownloadPopup from './components/DownloadPopup';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -38,6 +39,33 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
+
+  useEffect(() => {
+    const handleDownloadClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const trigger = target.closest('a, button') as HTMLElement | null;
+      if (!trigger) return;
+      if (trigger.closest('[data-download-modal]')) return;
+
+      const label = (trigger.textContent ?? '').toLowerCase();
+      const isDownloadTrigger = /\bdownload\b/.test(label);
+
+      if (!isDownloadTrigger) return;
+
+      event.preventDefault();
+      setIsDownloadPopupOpen(true);
+    };
+
+    document.addEventListener('click', handleDownloadClick);
+
+    return () => {
+      document.removeEventListener('click', handleDownloadClick);
+    };
+  }, []);
+
   return (
     <div className="bg-background text-foreground min-h-screen selection:bg-black selection:text-white flex flex-col">
       <ScrollToTop />
@@ -70,6 +98,10 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <DownloadPopup
+        isOpen={isDownloadPopupOpen}
+        onClose={() => setIsDownloadPopupOpen(false)}
+      />
     </div>
   )
 }
