@@ -30,7 +30,7 @@ export default function Footer() {
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-20">
                     {/* Brand Column - 2 cols */}
                     <div className="col-span-2">
-                        <img src={logo} alt="Inboxed Logo" className="h-10 w-auto mb-6 invert" />
+                        <img src={logo} alt="Inboxed Logo" className="h-14 w-auto mb-6 invert" />
                         <p className="font-body text-lg text-white/70 max-w-md transition-colors duration-150 hover:text-white">
                             Reclaiming the inbox for the modern era. Private, local, and intelligent email for macOS.
                         </p>

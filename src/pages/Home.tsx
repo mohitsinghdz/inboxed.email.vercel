@@ -82,8 +82,14 @@ export default function Home() {
                             <div className="w-full h-px bg-white/20 mb-6" />
                             <ul className="space-y-4 font-body text-lg mb-8 flex-grow opacity-90">
                                 <li className="flex gap-3 items-baseline"><span>&mdash;</span> Everything in Standard</li>
-                                <li className="flex gap-3 items-baseline"><span>&mdash;</span> Priority Support</li>
-                                <li className="flex gap-3 items-baseline"><span>&mdash;</span> Early Access Features</li>
+                                <li className="flex gap-3 items-baseline relative group">
+                                    <span>&mdash;</span> Local fine-tuning (LoRA) using MLX
+                                    <span className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-white/50 text-white/50 text-[10px] font-mono cursor-default ml-1 shrink-0 self-center">?</span>
+                                    <div className="absolute bottom-full left-0 mb-3 md:bottom-auto md:top-1/2 md:left-full md:-translate-y-1/2 md:mb-0 md:ml-3 w-56 bg-white text-black p-4 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto md:opacity-100 md:pointer-events-auto transition-opacity duration-200 z-10">
+                                        <p className="font-body text-sm leading-snug font-semibold mb-1">Your own private AI model trained on your emails.</p>
+                                        <p className="font-body text-xs leading-relaxed text-black/60">Runs and trains locally on your device.</p>
+                                    </div>
+                                </li>
                                 <li className="flex gap-3 items-baseline"><span>&mdash;</span> Support Development</li>
                             </ul>
                             <button className="bg-white text-black px-8 py-4 text-sm font-medium tracking-widest uppercase hover:bg-gray-200 transition-colors w-full">

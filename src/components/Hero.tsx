@@ -59,12 +59,12 @@ export default function Hero() {
                                 <button className="btn-primary">
                                     Download for Mac
                                 </button>
-                                <button className="btn-outline">
+                                {/* <button className="btn-outline">
                                     Read Manifesto
-                                </button>
+                                </button> */}
                             </div>
                             <div className="font-mono text-xs text-mutedForeground uppercase tracking-widest">
-                                Powered by Apple MLX &bull; macOS Sequoia Ready
+                                Powered by Apple MLX &bull;  llama.cpp
                             </div>
                         </div>
                     </div>
