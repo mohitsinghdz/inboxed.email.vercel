@@ -6,8 +6,6 @@ type DownloadPopupProps = {
     onClose: () => void;
 };
 
-const WAITLIST_ENDPOINT = import.meta.env.VITE_WAITLIST_WEBHOOK_URL as string | undefined;
-
 export default function DownloadPopup({ isOpen, onClose }: DownloadPopupProps) {
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
@@ -47,29 +45,24 @@ export default function DownloadPopup({ isOpen, onClose }: DownloadPopupProps) {
 
         if (!email.trim()) return;
 
-        if (!WAITLIST_ENDPOINT) {
-            setError('Waitlist endpoint is not configured yet.');
-            return;
-        }
-
         setError(null);
         setIsSubmitting(true);
 
         try {
-            const body = new URLSearchParams({
-                email: email.trim(),
-                source: 'website-download-popup',
-                createdAt: new Date().toISOString(),
+            const response = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email.trim(),
+                    source: 'website-download-popup',
+                }),
             });
 
-            await fetch(WAITLIST_ENDPOINT, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-                },
-                body: body.toString(),
-            });
+            if (!response.ok) {
+                const data = await response.json().catch(() => ({}));
+                setError((data as { error?: string }).error ?? 'Something went wrong. Please try again.');
+                return;
+            }
 
             setSubmitted(true);
         } catch {
