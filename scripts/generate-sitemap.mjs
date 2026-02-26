@@ -37,9 +37,19 @@ ${entries
 </urlset>
 `
 
-    const outPath = path.resolve(__dirname, '../public/sitemap.xml')
-    fs.writeFileSync(outPath, xml)
-    console.log(`  Generated sitemap.xml with ${entries.length} URLs`)
+    const publicPath = path.resolve(__dirname, '../public/sitemap.xml')
+    fs.writeFileSync(publicPath, xml)
+
+    // Also write to dist/ so the deployed file matches what was just generated.
+    // vite build copies public/ to dist/ before this script runs, so without
+    // this second write the deployed sitemap would be one build behind.
+    const distPath = path.resolve(__dirname, '../dist/sitemap.xml')
+    if (fs.existsSync(path.dirname(distPath))) {
+        fs.writeFileSync(distPath, xml)
+        console.log(`  Generated sitemap.xml with ${entries.length} URLs → public/ and dist/`)
+    } else {
+        console.log(`  Generated sitemap.xml with ${entries.length} URLs → public/ only (dist/ not found)`)
+    }
 }
 
 generateSitemap().catch((err) => {

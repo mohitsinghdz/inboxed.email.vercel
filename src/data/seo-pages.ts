@@ -2,6 +2,10 @@
 // Central data store for all programmatic SEO pages
 // ─────────────────────────────────────────────────
 
+import { comparisonContent } from './comparison-content';
+import { useCaseContent } from './usecase-content';
+import { alternativesContent } from './alternatives-content';
+
 // ── Types ────────────────────────────────────────
 
 export interface ComparisonRow {
@@ -27,6 +31,8 @@ export interface ComparisonData {
     heading: string;
     paragraphs: string[];
   };
+  verdict?: string;
+  faq?: { q: string; a: string }[];
   cta: string;
   schema: Record<string, unknown>;
 }
@@ -44,6 +50,7 @@ export interface UseCaseData {
   painPoints: { title: string; description: string }[];
   solutions: { title: string; description: string }[];
   features: string[];
+  faq?: { q: string; a: string }[];
   cta: string;
   schema: Record<string, unknown>;
 }
@@ -69,6 +76,8 @@ export interface AlternativesData {
   h1: string;
   intro: string;
   entries: AlternativeEntry[];
+  methodology?: string;
+  faq?: { q: string; a: string }[];
   cta: string;
   schema: Record<string, unknown>;
 }
@@ -128,7 +137,7 @@ function alternativesSchema(competitor: string, slug: string, entries: Alternati
 
 // ── Comparison Data ──────────────────────────────
 
-export const comparisons: ComparisonData[] = [
+const _comparisons: ComparisonData[] = [
   // ─ Existing 4 (migrated from hardcoded pages) ─
   {
     slug: "superhuman",
@@ -517,9 +526,14 @@ export const comparisons: ComparisonData[] = [
   },
 ];
 
+export const comparisons: ComparisonData[] = _comparisons.map((c) => ({
+  ...c,
+  ...(comparisonContent[c.slug] ?? {}),
+}));
+
 // ── Use-Case Data ────────────────────────────────
 
-export const useCases: UseCaseData[] = [
+const _useCases: UseCaseData[] = [
   {
     slug: "developers",
     profession: "Developers",
@@ -834,9 +848,14 @@ export const useCases: UseCaseData[] = [
   },
 ];
 
+export const useCases: UseCaseData[] = _useCases.map((u) => ({
+  ...u,
+  ...(useCaseContent[u.slug] ?? {}),
+}));
+
 // ── Alternatives Data ────────────────────────────
 
-export const alternatives: AlternativesData[] = [
+const _alternatives: AlternativesData[] = [
   {
     slug: "superhuman-alternatives",
     competitor: "Superhuman",
@@ -1067,10 +1086,11 @@ export const alternatives: AlternativesData[] = [
   },
 ];
 
-// Fill in alternatives schemas after array is defined
-alternatives.forEach((alt) => {
-  alt.schema = alternativesSchema(alt.competitor, alt.slug, alt.entries);
-});
+export const alternatives: AlternativesData[] = _alternatives.map((a) => ({
+  ...a,
+  schema: alternativesSchema(a.competitor, a.slug, a.entries),
+  ...(alternativesContent[a.slug] ?? {}),
+}));
 
 // ── Route Helpers ────────────────────────────────
 
@@ -1110,8 +1130,8 @@ export function getAllSitemapEntries(): { loc: string; lastmod: string }[] {
   const today = new Date().toISOString().split("T")[0];
   const entries = [
     { loc: `${base}/`, lastmod: today },
-    { loc: `${base}/best-private-ai-email`, lastmod: "2026-02-13" },
-    { loc: `${base}/blog`, lastmod: "2026-02-13" },
+    { loc: `${base}/best-private-ai-email`, lastmod: today },
+    { loc: `${base}/blog`, lastmod: today },
     { loc: `${base}/blog/local-ai-email`, lastmod: "2026-01-09" },
     { loc: `${base}/blog/inbox-zero-ai`, lastmod: "2026-01-12" },
     { loc: `${base}/blog/email-privacy-guide`, lastmod: "2026-01-15" },
@@ -1132,13 +1152,13 @@ export function getAllSitemapEntries(): { loc: string; lastmod: string }[] {
   ];
 
   comparisons.forEach((c) =>
-    entries.push({ loc: `${base}/compare/${c.slug}`, lastmod: "2026-02-13" })
+    entries.push({ loc: `${base}/compare/${c.slug}`, lastmod: today })
   );
   useCases.forEach((u) =>
-    entries.push({ loc: `${base}/best-email-for/${u.slug}`, lastmod: "2026-02-13" })
+    entries.push({ loc: `${base}/best-email-for/${u.slug}`, lastmod: today })
   );
   alternatives.forEach((a) =>
-    entries.push({ loc: `${base}/alternatives/${a.slug}`, lastmod: "2026-02-13" })
+    entries.push({ loc: `${base}/alternatives/${a.slug}`, lastmod: today })
   );
 
   return entries;

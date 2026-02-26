@@ -68,6 +68,21 @@ export default function UseCaseTemplate({ data }: { data: UseCaseData }) {
           </div>
         </section>
 
+        {/* FAQ */}
+        {data.faq && data.faq.length > 0 && (
+          <section className="mb-20 border-t border-black/10 pt-16">
+            <h2 className="font-serif text-3xl mb-10">Frequently Asked Questions</h2>
+            <div className="space-y-8">
+              {data.faq.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-bold text-lg mb-2">{item.q}</h3>
+                  <p className="font-body leading-relaxed text-mutedForeground">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* CTA */}
         <div className="text-center py-12">
           <Link to="/" className="btn-primary inline-block text-lg px-12 py-5">

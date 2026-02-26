@@ -89,6 +89,29 @@ export default function ComparisonTemplate({ data }: { data: ComparisonData }) {
           </div>
         </div>
 
+        {/* Bottom Line */}
+        {data.verdict && (
+          <div className="border-t border-black/10 mt-16 pt-16">
+            <h2 className="font-serif text-4xl mb-6">Bottom Line</h2>
+            <p className="font-body text-lg leading-relaxed">{data.verdict}</p>
+          </div>
+        )}
+
+        {/* FAQ */}
+        {data.faq && data.faq.length > 0 && (
+          <div className="border-t border-black/10 mt-16 pt-16">
+            <h2 className="font-serif text-4xl mb-10">Frequently Asked Questions</h2>
+            <div className="space-y-10">
+              {data.faq.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-bold text-xl mb-3">{item.q}</h3>
+                  <p className="font-body text-lg leading-relaxed text-mutedForeground">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Related Comparisons */}
         {relatedComparisons.length > 0 && (
           <div className="border-t border-black/10 mt-20 pt-16">

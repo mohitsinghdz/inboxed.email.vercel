@@ -73,6 +73,29 @@ export default function AlternativesTemplate({ data }: { data: AlternativesData 
           ))}
         </div>
 
+        {/* Methodology */}
+        {data.methodology && (
+          <div className="border-t border-black/10 mt-20 pt-16">
+            <h2 className="font-serif text-3xl mb-6">How We Evaluated These Alternatives</h2>
+            <p className="font-body text-lg leading-relaxed">{data.methodology}</p>
+          </div>
+        )}
+
+        {/* FAQ */}
+        {data.faq && data.faq.length > 0 && (
+          <div className="border-t border-black/10 mt-16 pt-16">
+            <h2 className="font-serif text-3xl mb-10">Frequently Asked Questions</h2>
+            <div className="space-y-8">
+              {data.faq.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-bold text-lg mb-2">{item.q}</h3>
+                  <p className="font-body leading-relaxed text-mutedForeground">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Bottom CTA */}
         <div className="mt-32 p-12 bg-black text-white">
           <h2 className="font-serif text-4xl mb-6 text-center">Ready to make the switch?</h2>
