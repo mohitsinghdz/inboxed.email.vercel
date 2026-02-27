@@ -1,33 +1,48 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 
-type DownloadPopupProps = {
-    isOpen: boolean;
-    onClose: () => void;
-};
-
-export default function DownloadPopup({ isOpen, onClose }: DownloadPopupProps) {
+export default function DownloadPopup() {
+    const [isOpen, setIsOpen] = useState(false);
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    // Listen for download button clicks globally
+    useEffect(() => {
+        const handleDownloadClick = (event: MouseEvent) => {
+            const target = event.target as HTMLElement | null;
+            if (!target) return;
+
+            const trigger = target.closest('a, button') as HTMLElement | null;
+            if (!trigger) return;
+            if (trigger.closest('[data-download-modal]')) return;
+
+            const label = (trigger.textContent ?? '').toLowerCase();
+            const isDownloadTrigger = /\bdownload\b/.test(label);
+
+            if (!isDownloadTrigger) return;
+
+            event.preventDefault();
+            setIsOpen(true);
+        };
+
+        document.addEventListener('click', handleDownloadClick);
+        return () => document.removeEventListener('click', handleDownloadClick);
+    }, []);
+
+    // Handle escape key + body scroll lock
     useEffect(() => {
         if (!isOpen) {
             setEmail('');
             setSubmitted(false);
             setIsSubmitting(false);
             setError(null);
+            return;
         }
-    }, [isOpen]);
-
-    useEffect(() => {
-        if (!isOpen) return;
 
         const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                onClose();
-            }
+            if (event.key === 'Escape') setIsOpen(false);
         };
 
         const originalOverflow = document.body.style.overflow;
@@ -38,11 +53,10 @@ export default function DownloadPopup({ isOpen, onClose }: DownloadPopupProps) {
             document.body.style.overflow = originalOverflow;
             document.removeEventListener('keydown', handleEscape);
         };
-    }, [isOpen, onClose]);
+    }, [isOpen]);
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
-
         if (!email.trim()) return;
 
         setError(null);
@@ -77,11 +91,11 @@ export default function DownloadPopup({ isOpen, onClose }: DownloadPopupProps) {
     return (
         <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4"
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             role="dialog"
             aria-modal="true"
             aria-labelledby="download-popup-title"
-            data-download-modal
+            data-download-modal=""
         >
             <div
                 className="w-full max-w-md border-2 border-black bg-white p-6 md:p-8"
@@ -124,7 +138,7 @@ export default function DownloadPopup({ isOpen, onClose }: DownloadPopupProps) {
 
                 <button
                     type="button"
-                    onClick={onClose}
+                    onClick={() => setIsOpen(false)}
                     className="w-full border border-black px-4 py-2 text-sm font-mono uppercase tracking-wider hover:bg-black hover:text-white transition-colors"
                 >
                     Close

@@ -1,0 +1,73 @@
+---
+import '../index.css';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer.astro';
+import DownloadPopup from '../components/DownloadPopup';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  ogTitle?: string;
+  ogDescription?: string;
+  schemas?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical = 'https://inboxed.email',
+  type = 'website',
+  ogTitle,
+  ogDescription,
+  schemas = [],
+} = Astro.props;
+
+const resolvedOgTitle = ogTitle ?? title;
+const resolvedOgDescription = ogDescription ?? description;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Standard Metadata -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Inboxed" />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
+
+    <!-- Structured Data -->
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body>
+    <div class="bg-background text-foreground min-h-screen selection:bg-black selection:text-white flex flex-col">
+      <Navbar client:load />
+      <main class="flex-grow">
+        <slot />
+      </main>
+      <Footer />
+      <DownloadPopup client:idle />
+    </div>
+  </body>
+</html>

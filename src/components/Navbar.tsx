@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const navLinks = [
@@ -19,21 +18,21 @@ export default function Navbar() {
             <div className="container-custom flex items-center justify-between h-20">
                 {/* Logo */}
                 <div className="flex items-center gap-2">
-                    <Link to="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
-                        <img src={logo} alt="Inboxed Logo" className="h-[52px] w-auto" />
-                    </Link>
+                    <a href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
+                        <img src={logo.src ?? logo} alt="Inboxed Logo" className="h-[52px] w-auto" />
+                    </a>
                 </div>
 
                 {/* Desktop nav links */}
                 <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
-                        <Link
+                        <a
                             key={link.to}
-                            to={link.to}
+                            href={link.to}
                             className="text-sm font-mono uppercase tracking-widest hover:underline hover:decoration-1 underline-offset-4"
                         >
                             {link.label}
-                        </Link>
+                        </a>
                     ))}
                 </div>
 
@@ -80,23 +79,23 @@ export default function Navbar() {
             >
                 <div className="container-custom flex flex-col items-center justify-center gap-10 pt-20">
                     {navLinks.map((link) => (
-                        <Link
+                        <a
                             key={link.to}
-                            to={link.to}
+                            href={link.to}
                             className="text-lg font-mono uppercase tracking-widest hover:underline hover:decoration-1 underline-offset-4"
                             onClick={closeMobileMenu}
                         >
                             {link.label}
-                        </Link>
+                        </a>
                     ))}
-                    <Link
-                        to="/#download"
+                    <a
+                        href="/#download"
                         className="text-lg font-mono uppercase tracking-widest hover:underline hover:decoration-1 underline-offset-4 flex items-center gap-2"
                         onClick={closeMobileMenu}
                     >
                         <span>Download</span>
                         <Download size={16} />
-                    </Link>
+                    </a>
                 </div>
             </div>
         </nav>
