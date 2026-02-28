@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { comparisons } from '../../data/seo-pages';
+import type { ComparisonData, ComparisonRow } from '../../data/seo-pages';
+
+export function getStaticPaths() {
+  return comparisons.map((data) => ({
+    params: { slug: data.slug },
+    props: { data },
+  }));
+}
+
+const { data } = Astro.props as { data: ComparisonData };
+
+const relatedComparisons = comparisons
+  .filter((c) => c.slug !== data.slug)
+  .slice(0, 4);
+
+function competitorIcon(row: ComparisonRow) {
+  if (row.competitorIcon === 'x') return '✕';
+  if (row.competitorIcon === 'check') return '✓';
+  return '';
+}
+
+function inboxedIcon(row: ComparisonRow) {
+  if (row.inboxedIcon === 'neutral') return '';
+  const icons: Record<string, string> = {
+    check: '✓',
+    shield: '⊕',
+    zap: '⚡',
+    cpu: '⊙',
+    search: '⊕',
+  };
+  return icons[row.inboxedIcon] ?? '';
+}
+---
+
+<BaseLayout
+  title={data.seo.title}
+  description={data.seo.description}
+  canonical={data.seo.canonical}
+  schemas={[data.schema]}
+>
+  <div class="container-custom py-32">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="font-serif text-5xl md:text-7xl mb-8">{data.h1}</h1>
+      <p class="font-body text-xl md:text-2xl mb-16 max-w-2xl leading-relaxed text-mutedForeground">
+        {data.intro}
+      </p>
+
+      <!-- Comparison Table -->
+      <div class="mb-20 overflow-x-auto">
+        <table class="w-full border-collapse text-left font-sans text-lg">
+          <thead>
+            <tr class="border-b-4 border-black">
+              <th class="py-4 pr-8 font-mono text-sm uppercase tracking-widest text-mutedForeground">Feature</th>
+              <th class="py-4 px-8 font-serif text-2xl opacity-70">{data.name}</th>
+              <th class="py-4 px-8 font-serif text-2xl font-bold">Inboxed</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.rows.map((row, i) => (
+              <tr class={i < data.rows.length - 1 ? 'border-b border-black/10' : ''}>
+                <td class="py-5 pr-8 font-mono text-sm uppercase tracking-widest text-mutedForeground">{row.feature}</td>
+                <td class="py-5 px-8 opacity-70">
+                  {competitorIcon(row) && <span class="mr-2">{competitorIcon(row)}</span>}
+                  {row.competitor}
+                </td>
+                <td class="py-5 px-8 font-medium">
+                  {inboxedIcon(row) && <span class="mr-2">{inboxedIcon(row)}</span>}
+                  {row.inboxed}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Why Switch -->
+      <div class="border-t border-black pt-16">
+        <h2 class="font-serif text-4xl mb-6">{data.whySwitch.heading}</h2>
+        {data.whySwitch.paragraphs.map((p) => (
+          <p class="font-body text-lg leading-relaxed mb-4">{p}</p>
+        ))}
+        <div class="mt-4">
+          <a href="/" class="btn-primary inline-block">{data.cta}</a>
+        </div>
+      </div>
+
+      <!-- Bottom Line -->
+      {data.verdict && (
+        <div class="border-t border-black/10 mt-16 pt-16">
+          <h2 class="font-serif text-4xl mb-6">Bottom Line</h2>
+          <p class="font-body text-lg leading-relaxed">{data.verdict}</p>
+        </div>
+      )}
+
+      <!-- FAQ -->
+      {data.faq && data.faq.length > 0 && (
+        <div class="border-t border-black/10 mt-16 pt-16">
+          <h2 class="font-serif text-4xl mb-10">Frequently Asked Questions</h2>
+          <div class="space-y-10">
+            {data.faq.map((item) => (
+              <div>
+                <h3 class="font-bold text-xl mb-3">{item.q}</h3>
+                <p class="font-body text-lg leading-relaxed text-mutedForeground">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Related Comparisons -->
+      {relatedComparisons.length > 0 && (
+        <div class="border-t border-black/10 mt-20 pt-16">
+          <h3 class="font-mono text-sm uppercase tracking-widest text-mutedForeground mb-8">More Comparisons</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {relatedComparisons.map((c) => (
+              <a
+                href={`/compare/${c.slug}`}
+                class="block p-4 border border-black/10 hover:border-black transition-colors"
+              >
+                <span class="font-body text-sm">vs {c.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

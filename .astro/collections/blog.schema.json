@@ -1,0 +1,48 @@
+{
+  "$ref": "#/definitions/blog",
+  "definitions": {
+    "blog": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "datePublished": {
+          "type": "string"
+        },
+        "dateModified": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string",
+          "default": "Mohit Singh"
+        },
+        "canonical": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "datePublished",
+        "dateModified",
+        "canonical"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

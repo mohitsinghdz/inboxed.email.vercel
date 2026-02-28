@@ -1,0 +1,143 @@
+---
+import logo from '../assets/logo.png';
+import { comparisons, useCases, alternatives } from '../data/seo-pages';
+---
+
+<footer class="bg-black text-white border-t-8 border-black">
+  <!-- CTA Section -->
+  <div class="container-custom pt-24 pb-20 text-center border-b border-white/10">
+    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-tight">
+      Ready to reclaim your inbox?
+    </h2>
+    <p class="font-body text-lg text-white/60 max-w-lg mx-auto mb-10">
+      Private, local, and intelligent email built for macOS.
+    </p>
+    <a
+      href="#"
+      class="inline-block bg-white text-black font-mono text-sm uppercase tracking-widest px-10 py-4 transition-colors duration-150 ease-linear hover:bg-black hover:text-white border border-white"
+    >
+      Download for macOS
+    </a>
+  </div>
+
+  <!-- Links Grid -->
+  <div class="container-custom pt-16 pb-20">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-12 mb-20">
+      <!-- Brand Column - 2 cols -->
+      <div class="col-span-2">
+        <img src={logo.src ?? logo} alt="Inboxed Logo" class="h-14 w-auto mb-6 invert" />
+        <p class="font-body text-lg text-white/70 max-w-md transition-colors duration-150 hover:text-white">
+          Reclaiming the inbox for the modern era. Private, local, and intelligent email for macOS.
+        </p>
+      </div>
+
+      <!-- Product Column -->
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-widest mb-6 text-white/50">Product</h4>
+        <ul class="space-y-4 font-body">
+          <li><a href="#" class="footer-link">Download</a></li>
+          <li><a href="#" class="footer-link">Changelog</a></li>
+          <li><a href="#" class="footer-link">Roadmap</a></li>
+          <li><a href="/blog" class="footer-link">Blog</a></li>
+          <li><a href="/best-private-ai-email" class="footer-link">Best Private AI Email</a></li>
+        </ul>
+      </div>
+
+      <!-- Compare Column -->
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-widest mb-6 text-white/50">Compare</h4>
+        <ul class="space-y-4 font-body">
+          {comparisons.map((c) => (
+            <li>
+              <a href={`/compare/${c.slug}`} class="footer-link">
+                vs {c.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Use Cases Column -->
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-widest mb-6 text-white/50">Best For</h4>
+        <ul class="space-y-4 font-body">
+          {useCases.map((u) => (
+            <li>
+              <a href={`/best-email-for/${u.slug}`} class="footer-link">
+                {u.profession}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Alternatives + Legal Column -->
+      <div>
+        <h4 class="font-mono text-xs uppercase tracking-widest mb-6 text-white/50">Alternatives</h4>
+        <ul class="space-y-4 font-body mb-10">
+          {alternatives.map((a) => (
+            <li>
+              <a href={`/alternatives/${a.slug}`} class="footer-link">
+                {a.competitor} Alts
+              </a>
+            </li>
+          ))}
+        </ul>
+        <h4 class="font-mono text-xs uppercase tracking-widest mb-6 text-white/50">Legal</h4>
+        <ul class="space-y-4 font-body">
+          <li><a href="/privacy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/terms" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="font-mono text-xs text-white/50">
+        &copy; 2026 Inboxed Inc. All rights reserved.
+      </p>
+      <p class="font-mono text-xs text-white/50">
+        Designed in California. Built with Apple MLX.
+      </p>
+      <button
+        id="back-to-top"
+        class="font-mono text-xs text-white/50 uppercase tracking-widest transition-colors duration-150 hover:text-white cursor-pointer"
+        aria-label="Scroll back to top of page"
+      >
+        Back to top
+      </button>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    position: relative;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width 0.25s ease;
+  }
+  .footer-link:hover {
+    color: #fff;
+  }
+  .footer-link:hover::after {
+    width: 100%;
+  }
+</style>
+
+<script>
+  document.getElementById('back-to-top')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features';
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Inboxed",
+    "description": "A high-performance private email client for macOS. Inboxed uses local LLMs to provide intelligent features like email summarization and smart categorization entirely on-device using Apple MLX and llama.cpp. Supports 7B+ parameter models offline.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "macOS",
+    "softwareVersion": "1.0",
+    "fileSize": "10MB",
+    "downloadUrl": "https://inboxed.email",
+    "featureList": "Free Superhuman alternative, Private AI email summarization, Local LLM processing, Offline email client capabilities, Apple Metal GPU acceleration, Secure IMAP fetch, Zero-data-exit privacy",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Standard",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free private email client with local AI models, unlimited accounts, and community support"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro Lifetime",
+        "price": "1.00",
+        "priceCurrency": "USD",
+        "description": "One-time payment for priority support and early access to new private AI features"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Inboxed",
+    "url": "https://inboxed.email",
+    "description": "Maker of Inboxed, the local private LLM email client for macOS.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Inboxed"
+    }
+  }
+];
+---
+
+<BaseLayout
+  title="Private AI Email Client for Mac | Local LLM | Inboxed"
+  description="Inboxed is the premier private email client for macOS. Run on-device AI for email summarization and triage without the cloud. Secure, offline, and fast."
+  canonical="https://inboxed.email"
+  schemas={schemas}
+>
+  <Hero />
+  <Features client:visible />
+
+  <!-- Pricing Section -->
+  <section class="py-32 border-t-8 border-black bg-muted/30">
+    <div class="container-custom">
+      <h2 class="font-serif text-5xl md:text-7xl mb-4 text-center">Fair Pricing.</h2>
+      <p class="font-mono text-xs uppercase tracking-widest text-mutedForeground text-center mb-16">
+        No subscriptions. No hidden costs.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
+        <!-- Free Tier -->
+        <div class="p-8 border-2 border-black bg-white flex flex-col">
+          <h3 class="font-serif text-3xl mb-2">Standard</h3>
+          <div class="text-4xl font-mono font-bold mb-4">Free</div>
+          <div class="w-full h-px bg-black/20 mb-6"></div>
+          <ul class="space-y-4 font-body text-lg mb-8 flex-grow">
+            <li class="flex gap-3 items-baseline"><span class="text-black font-bold">&mdash;</span> All AI Models</li>
+            <li class="flex gap-3 items-baseline"><span class="text-black font-bold">&mdash;</span> Unlimited Accounts</li>
+            <li class="flex gap-3 items-baseline"><span class="text-black font-bold">&mdash;</span> Community Support</li>
+          </ul>
+          <button class="btn-outline w-full">Download</button>
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="p-8 border-4 border-black bg-black text-white flex flex-col relative md:-translate-y-4 transition-shadow duration-200 hover:shadow-[8px_8px_0px_0px_#000]">
+          <h3 class="font-serif text-3xl mb-2">Pro Lifetime</h3>
+          <div class="text-4xl font-mono font-bold mb-4">$1 <span class="text-sm font-normal opacity-70">/ life</span></div>
+          <div class="w-full h-px bg-white/20 mb-6"></div>
+          <ul class="space-y-4 font-body text-lg mb-8 flex-grow opacity-90">
+            <li class="flex gap-3 items-baseline"><span>&mdash;</span> Everything in Standard</li>
+            <li class="flex gap-3 items-baseline relative group">
+              <span>&mdash;</span> Local fine-tuning (LoRA) using MLX
+              <span class="inline-flex items-center justify-center w-4 h-4 rounded-full border border-white/50 text-white/50 text-[10px] font-mono cursor-default ml-1 shrink-0 self-center">?</span>
+              <div class="absolute bottom-full left-0 mb-3 md:bottom-auto md:top-1/2 md:left-full md:-translate-y-1/2 md:mb-0 md:ml-3 w-56 bg-white text-black p-4 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-10">
+                <p class="font-body text-sm leading-snug font-semibold mb-1">Your own private AI model trained on your emails.</p>
+                <p class="font-body text-xs leading-relaxed text-black/60">Runs and trains locally on your device.</p>
+              </div>
+            </li>
+            <li class="flex gap-3 items-baseline"><span>&mdash;</span> Support Development</li>
+          </ul>
+          <button class="bg-white text-black px-8 py-4 text-sm font-medium tracking-widest uppercase hover:bg-gray-200 transition-colors w-full">
+            Get Pro
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="font-mono text-xs uppercase tracking-widest text-mutedForeground mb-8">
+          See how we compare
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-12 font-body text-lg underline-offset-4">
+          <a href="/compare/superhuman" class="hover:underline text-black font-bold">Free Superhuman Alternative</a>
+          <a href="/compare/canary-mail" class="hover:underline">vs Canary Mail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement Section -->
+  <section class="py-40 border-t-8 border-black">
+    <div class="container-custom text-center">
+      <div class="font-serif text-[8rem] md:text-[12rem] leading-none select-none text-black/10 -mb-16 md:-mb-24">
+        &ldquo;
+      </div>
+      <h2 class="font-heading text-5xl md:text-8xl mb-12 italic">
+        "The email client for the AI era."
+      </h2>
+      <p class="font-body text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-16">
+        Stop sending your personal data to the cloud to get smart features.
+        Inboxed brings the power of Large Language Models directly to your device.
+      </p>
+      <div class="w-24 h-[4px] bg-black mx-auto mb-16"></div>
+      <button class="btn-primary">
+        Download for Mac
+      </button>
+    </div>
+  </section>
+</BaseLayout>

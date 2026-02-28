@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useCases } from '../../data/seo-pages';
+import type { UseCaseData } from '../../data/seo-pages';
+
+export function getStaticPaths() {
+  return useCases.map((data) => ({
+    params: { slug: data.slug },
+    props: { data },
+  }));
+}
+
+const { data } = Astro.props as { data: UseCaseData };
+
+const relatedUseCases = useCases
+  .filter((u) => u.slug !== data.slug)
+  .slice(0, 4);
+---
+
+<BaseLayout
+  title={data.seo.title}
+  description={data.seo.description}
+  canonical={data.seo.canonical}
+  schemas={[data.schema]}
+>
+  <div class="container-custom py-32">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="font-serif text-5xl md:text-7xl mb-8 leading-tight">{data.h1}</h1>
+      <p class="font-body text-xl md:text-2xl mb-20 max-w-2xl leading-relaxed text-mutedForeground">
+        {data.intro}
+      </p>
+
+      <!-- Pain Points -->
+      <section class="mb-20">
+        <h2 class="font-mono text-sm uppercase tracking-widest text-mutedForeground mb-10">The Problem</h2>
+        <div class="space-y-8">
+          {data.painPoints.map((point) => (
+            <div class="flex gap-4">
+              <span class="mt-1 flex-shrink-0 text-mutedForeground">⚠</span>
+              <div>
+                <h3 class="font-bold text-lg mb-1">{point.title}</h3>
+                <p class="font-body text-mutedForeground leading-relaxed">{point.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Solutions -->
+      <section class="mb-20 border-t border-black pt-16">
+        <h2 class="font-mono text-sm uppercase tracking-widest text-mutedForeground mb-10">How Inboxed Solves This</h2>
+        <div class="space-y-8">
+          {data.solutions.map((solution) => (
+            <div class="flex gap-4">
+              <span class="mt-1 flex-shrink-0">✓</span>
+              <div>
+                <h3 class="font-bold text-lg mb-1">{solution.title}</h3>
+                <p class="font-body text-mutedForeground leading-relaxed">{solution.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Feature Highlights -->
+      <section class="mb-20 bg-muted/30 p-8 md:p-12">
+        <h2 class="font-serif text-3xl mb-8">Key Features for {data.profession}</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {data.features.map((feature) => (
+            <div class="flex items-center gap-2">
+              <span class="flex-shrink-0">✓</span>
+              <span class="font-body text-sm">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      {data.faq && data.faq.length > 0 && (
+        <section class="mb-20 border-t border-black/10 pt-16">
+          <h2 class="font-serif text-3xl mb-10">Frequently Asked Questions</h2>
+          <div class="space-y-8">
+            {data.faq.map((item) => (
+              <div>
+                <h3 class="font-bold text-lg mb-2">{item.q}</h3>
+                <p class="font-body leading-relaxed text-mutedForeground">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- CTA -->
+      <div class="text-center py-12">
+        <a href="/" class="btn-primary inline-block text-lg px-12 py-5">{data.cta}</a>
+      </div>
+
+      <!-- Related Use Cases -->
+      {relatedUseCases.length > 0 && (
+        <div class="border-t border-black/10 mt-8 pt-16">
+          <h3 class="font-mono text-sm uppercase tracking-widest text-mutedForeground mb-8">Also Popular</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {relatedUseCases.map((u) => (
+              <a
+                href={`/best-email-for/${u.slug}`}
+                class="block p-4 border border-black/10 hover:border-black transition-colors"
+              >
+                <span class="font-body text-sm">For {u.profession}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

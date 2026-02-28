@@ -1,0 +1,18 @@
+
+export default new Map([
+["src/content/blog/apple-mail-slow-vs-rust-native.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fapple-mail-slow-vs-rust-native.mdx&astroContentModuleFlag=true")],
+["src/content/blog/best-ai-email-clients.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fbest-ai-email-clients.mdx&astroContentModuleFlag=true")],
+["src/content/blog/best-mac-email-clients.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fbest-mac-email-clients.mdx&astroContentModuleFlag=true")],
+["src/content/blog/block-email-trackers-mac.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fblock-email-trackers-mac.mdx&astroContentModuleFlag=true")],
+["src/content/blog/developer-mac-email-workflow.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fdeveloper-mac-email-workflow.mdx&astroContentModuleFlag=true")],
+["src/content/blog/email-privacy-audit.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Femail-privacy-audit.mdx&astroContentModuleFlag=true")],
+["src/content/blog/email-privacy-guide.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Femail-privacy-guide.mdx&astroContentModuleFlag=true")],
+["src/content/blog/gmail-privacy-truth.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fgmail-privacy-truth.mdx&astroContentModuleFlag=true")],
+["src/content/blog/inbox-zero-ai.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Finbox-zero-ai.mdx&astroContentModuleFlag=true")],
+["src/content/blog/local-ai-email.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Flocal-ai-email.mdx&astroContentModuleFlag=true")],
+["src/content/blog/local-llm-email-drafting-tutorial.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Flocal-llm-email-drafting-tutorial.mdx&astroContentModuleFlag=true")],
+["src/content/blog/offline-email-clients.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Foffline-email-clients.mdx&astroContentModuleFlag=true")],
+["src/content/blog/on-device-ai-email.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fon-device-ai-email.mdx&astroContentModuleFlag=true")],
+["src/content/blog/zero-data-exit-framework.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fzero-data-exit-framework.mdx&astroContentModuleFlag=true")],
+["src/content/blog/superhuman-alternatives.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fblog%2Fsuperhuman-alternatives.mdx&astroContentModuleFlag=true")]]);
+		
