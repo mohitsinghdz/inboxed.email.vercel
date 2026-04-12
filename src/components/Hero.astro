@@ -1,4 +1,5 @@
 ---
+import appScreenshot from '../assets/app-screenshot.webp';
 ---
 
 <section class="relative min-h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden bg-background">
@@ -40,83 +41,61 @@
 
         <div class="lg:col-span-7 flex flex-col items-start gap-6">
           <div class="flex flex-wrap gap-4">
-            <button class="btn-primary">
-              Download for Mac
-            </button>
+            <a
+              href="https://github.com/mohitsinghdz/inboxed.email/releases/download/v0.1.0-alpha.1/Inboxed_0.1.0-alpha.1_aarch64.dmg"
+              class="btn-primary"
+              download
+            >
+              Download for Mac (Alpha)
+            </a>
           </div>
           <div class="font-mono text-xs text-mutedForeground uppercase tracking-widest">
-            Powered by Apple MLX &bull; llama.cpp
+            Apple Silicon &bull; Powered by llama.cpp &bull; Free Alpha
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- App Screenshot Mockup -->
+  <!-- App Screenshot -->
   <div class="container-custom relative z-10 mt-16 md:mt-20 animate-[fadeInUp_0.8s_ease-out_0.5s_both]">
-    <div class="relative mx-auto max-w-5xl">
-      <!-- Shadow layer -->
-      <div class="absolute inset-0 translate-y-4 bg-black/10 blur-2xl"></div>
+    <div class="screenshot-wrapper relative mx-auto max-w-5xl">
+      <!-- Diffuse glow behind the frame -->
+      <div class="absolute -inset-6 bg-black/8 blur-3xl rounded-full pointer-events-none"></div>
 
       <!-- Window frame -->
-      <div class="relative border-2 border-black bg-background">
+      <div class="relative border-2 border-black bg-background overflow-hidden screenshot-frame">
         <!-- Title bar -->
-        <div class="flex items-center gap-2 px-4 py-3 border-b-2 border-black bg-muted">
+        <div class="flex items-center gap-2 px-4 py-3 border-b-2 border-black bg-muted shrink-0">
           <span class="w-3 h-3 border-2 border-black bg-foreground"></span>
           <span class="w-3 h-3 border-2 border-black bg-foreground"></span>
           <span class="w-3 h-3 border-2 border-black bg-foreground"></span>
           <span class="ml-4 font-mono text-[11px] text-mutedForeground uppercase tracking-widest select-none">
-            MailBox -- Smart Inbox
+            Inboxed — Smart Inbox
           </span>
         </div>
 
-        <!-- Window content -->
-        <div class="relative flex items-center justify-center bg-muted/50 aspect-[16/9] overflow-hidden">
-          <!-- Grid pattern inside window -->
-          <div
-            class="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"
-          ></div>
+        <!-- Screenshot image -->
+        <img
+          src={appScreenshot.src}
+          width={appScreenshot.width}
+          height={appScreenshot.height}
+          alt="Inboxed app screenshot showing the smart inbox with AI-powered email summaries"
+          loading="eager"
+          decoding="async"
+          class="block w-full h-auto"
+        />
 
-          <!-- Placeholder content -->
-          <div class="relative flex flex-col items-center gap-6 p-8">
-            <div class="flex flex-col gap-3 w-full max-w-md">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-black/10 shrink-0"></div>
-                <div class="h-3 bg-black/10 flex-1"></div>
-                <div class="h-3 bg-black/10 w-16"></div>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-black/15 shrink-0"></div>
-                <div class="h-3 bg-black/15 flex-1"></div>
-                <div class="h-3 bg-black/15 w-12"></div>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-black/10 shrink-0"></div>
-                <div class="h-3 bg-black/10 flex-1"></div>
-                <div class="h-3 bg-black/10 w-20"></div>
-              </div>
-            </div>
-
-            <div class="font-mono text-sm md:text-base text-mutedForeground uppercase tracking-[0.25em] select-none">
-              App Screenshot
-            </div>
-
-            <div class="flex flex-col gap-3 w-full max-w-md">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-black/10 shrink-0"></div>
-                <div class="h-3 bg-black/10 flex-1"></div>
-                <div class="h-3 bg-black/10 w-14"></div>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-black/10 shrink-0"></div>
-                <div class="h-3 bg-black/10 flex-1"></div>
-                <div class="h-3 bg-black/10 w-10"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Bottom fade-out vignette -->
+        <div class="absolute bottom-0 inset-x-0 h-24 pointer-events-none"
+          style="background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.85));"></div>
       </div>
+
+      <!-- Corner accent shadows -->
+      <div class="absolute -bottom-3 -left-3 w-24 h-24 pointer-events-none"
+        style="background: radial-gradient(ellipse at bottom left, rgba(0,0,0,0.18) 0%, transparent 70%);"></div>
+      <div class="absolute -bottom-3 -right-3 w-24 h-24 pointer-events-none"
+        style="background: radial-gradient(ellipse at bottom right, rgba(0,0,0,0.18) 0%, transparent 70%);"></div>
     </div>
   </div>
 
@@ -139,5 +118,22 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Lifted card effect — floats above the page */
+  .screenshot-frame {
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 8px 16px rgba(0, 0, 0, 0.08),
+      0 24px 48px rgba(0, 0, 0, 0.12),
+      0 48px 80px rgba(0, 0, 0, 0.08),
+      /* corner halos */
+      -6px 6px 20px rgba(0, 0, 0, 0.06),
+      6px 6px 20px rgba(0, 0, 0, 0.06);
+    transform: translateY(-6px);
+  }
+
+  .screenshot-wrapper {
+    filter: drop-shadow(0 32px 48px rgba(0, 0, 0, 0.12));
   }
 </style>
