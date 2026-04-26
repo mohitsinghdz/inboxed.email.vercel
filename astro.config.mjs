@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://inboxed.email',
   output: 'static',
+  trailingSlash: 'always',
   integrations: [
     react(),
     sitemap(),

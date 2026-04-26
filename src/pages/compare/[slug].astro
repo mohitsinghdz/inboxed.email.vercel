@@ -16,6 +16,22 @@ const relatedComparisons = comparisons
   .filter((c) => c.slug !== data.slug)
   .slice(0, 4);
 
+const schemas = [data.schema];
+if (data.faq && data.faq.length > 0) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": data.faq.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a,
+      },
+    })),
+  });
+}
+
 function competitorIcon(row: ComparisonRow) {
   if (row.competitorIcon === 'x') return '✕';
   if (row.competitorIcon === 'check') return '✓';
@@ -39,7 +55,7 @@ function inboxedIcon(row: ComparisonRow) {
   title={data.seo.title}
   description={data.seo.description}
   canonical={data.seo.canonical}
-  schemas={[data.schema]}
+  schemas={schemas}
 >
   <div class="container-custom py-32">
     <div class="max-w-4xl mx-auto">

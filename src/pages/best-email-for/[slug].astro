@@ -15,13 +15,29 @@ const { data } = Astro.props as { data: UseCaseData };
 const relatedUseCases = useCases
   .filter((u) => u.slug !== data.slug)
   .slice(0, 4);
+
+const schemas = [data.schema];
+if (data.faq && data.faq.length > 0) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": data.faq.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a,
+      },
+    })),
+  });
+}
 ---
 
 <BaseLayout
   title={data.seo.title}
   description={data.seo.description}
   canonical={data.seo.canonical}
-  schemas={[data.schema]}
+  schemas={schemas}
 >
   <div class="container-custom py-32">
     <div class="max-w-4xl mx-auto">
