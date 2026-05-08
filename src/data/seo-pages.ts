@@ -90,7 +90,7 @@ function comparisonSchema(name: string, slug: string): Record<string, unknown> {
     "@type": "WebPage",
     name: `Inboxed vs ${name} — Comparison`,
     description: `A head-to-head comparison of Inboxed and ${name}.`,
-    url: `https://inboxed.email/compare/${slug}`,
+    url: `https://inboxed.email/compare/${slug}/`,
     mainEntity: {
       "@type": "SoftwareApplication",
       name: "Inboxed",
@@ -105,7 +105,7 @@ function useCaseSchema(profession: string, slug: string): Record<string, unknown
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `Best Email Client for ${profession}`,
-    url: `https://inboxed.email/best-email-for/${slug}`,
+    url: `https://inboxed.email/best-email-for/${slug}/`,
     about: {
       "@type": "Thing",
       name: profession,
@@ -124,7 +124,7 @@ function alternativesSchema(competitor: string, slug: string, entries: Alternati
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `Best ${competitor} Alternatives in 2026`,
-    url: `https://inboxed.email/alternatives/${slug}`,
+    url: `https://inboxed.email/alternatives/${slug}/`,
     numberOfItems: entries.length,
     itemListElement: entries.map((e) => ({
       "@type": "ListItem",
@@ -145,7 +145,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Free Superhuman Alternative with Local AI | Inboxed",
       description: "Looking for a free Superhuman alternative? Inboxed offers the same speed and intelligence but runs entirely on your Mac for total privacy.",
-      canonical: "https://inboxed.email/compare/superhuman",
+      canonical: "https://inboxed.email/compare/superhuman/",
     },
     h1: "The Free Superhuman Alternative.",
     intro: "Inboxed gives you the speed of Superhuman without the $360/year price tag or the cloud-based AI scanning.",
@@ -173,7 +173,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "0.email Alternative (Native Mac App) | Inboxed",
       description: "The best native alternative to 0.email. Zero setup, native Apple Silicon performance, and full local AI privacy.",
-      canonical: "https://inboxed.email/compare/zero",
+      canonical: "https://inboxed.email/compare/zero/",
     },
     h1: "Inboxed vs. 0.email",
     intro: "0.email is a great open-source project. But it runs in your browser or as a web wrapper. Inboxed is a high-performance PRO app built natively for Apple Silicon.",
@@ -199,7 +199,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Thunderbird Alternative with Private AI | Inboxed",
       description: "Looking for a modern Thunderbird alternative? Inboxed offers the same offline privacy but with powerful local AI features built natively for Mac.",
-      canonical: "https://inboxed.email/compare/thunderbird",
+      canonical: "https://inboxed.email/compare/thunderbird/",
     },
     h1: "Inboxed vs. Thunderbird",
     intro: "Thunderbird is the classic choice for privacy. But it feels stuck in the past. Inboxed is the modern evolution: offline privacy meets local intelligence.",
@@ -227,7 +227,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Apple Mail Alternative with On-Device AI | Inboxed",
       description: "Love Apple Mail's privacy but want more intelligence? Inboxed is the native Mac email app with local LLMs for summarization and smart replies.",
-      canonical: "https://inboxed.email/compare/apple-mail",
+      canonical: "https://inboxed.email/compare/apple-mail/",
     },
     h1: "Inboxed vs. Apple Mail",
     intro: "Apple Mail is the standard for privacy on Mac. Inboxed takes that foundation and adds the power of a local Private LLM.",
@@ -255,7 +255,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Gmail Alternative with Private AI (No Data Mining) | Inboxed",
       description: "Tired of Gmail scanning your emails for ads? Inboxed is a private Gmail alternative with local AI that never touches a cloud server.",
-      canonical: "https://inboxed.email/compare/gmail",
+      canonical: "https://inboxed.email/compare/gmail/",
     },
     h1: "The Private Gmail Alternative.",
     intro: "Gmail is the world's most popular email client. But your data fuels Google's ad machine. Inboxed gives you smart email without the surveillance.",
@@ -283,7 +283,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Outlook Alternative for Mac with Local AI | Inboxed",
       description: "Switch from Outlook to Inboxed — a native macOS email client with private, on-device AI. No Microsoft account or subscription needed.",
-      canonical: "https://inboxed.email/compare/outlook",
+      canonical: "https://inboxed.email/compare/outlook/",
     },
     h1: "Inboxed vs. Outlook",
     intro: "Outlook is the enterprise default. But on Mac, it's a resource-heavy port packed with features you don't need. Inboxed is purpose-built for macOS.",
@@ -311,7 +311,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Spark Email Alternative with Private AI | Inboxed",
       description: "Looking for a Spark alternative that doesn't store your emails on third-party servers? Inboxed runs AI locally on your Mac for total privacy.",
-      canonical: "https://inboxed.email/compare/spark",
+      canonical: "https://inboxed.email/compare/spark/",
     },
     h1: "Inboxed vs. Spark",
     intro: "Spark is a polished email client. But it stores your emails on Readdle's servers to power its features. Inboxed gives you the polish without the privacy trade-off.",
@@ -338,7 +338,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "HEY Email Alternative (No Subscription) | Inboxed",
       description: "Love HEY's philosophy but not the $99/year price? Inboxed offers inbox zero philosophy with local AI — free, private, and native on Mac.",
-      canonical: "https://inboxed.email/compare/hey",
+      canonical: "https://inboxed.email/compare/hey/",
     },
     h1: "Inboxed vs. HEY",
     intro: "HEY reimagined email. But at $99/year with no IMAP support, you're locked into Basecamp's ecosystem. Inboxed gives you the philosophy without the lock-in.",
@@ -366,7 +366,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Mailspring Alternative with AI Superpowers | Inboxed",
       description: "Looking for a modern Mailspring alternative? Inboxed offers native macOS performance with on-device AI — no Electron, no cloud dependency.",
-      canonical: "https://inboxed.email/compare/mailspring",
+      canonical: "https://inboxed.email/compare/mailspring/",
     },
     h1: "Inboxed vs. Mailspring",
     intro: "Mailspring is a solid Electron-based email client. But Electron apps can't match native performance, and Mailspring lacks built-in AI entirely.",
@@ -392,7 +392,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Proton Mail Alternative with Local AI | Inboxed",
       description: "Want Proton Mail's privacy philosophy with on-device AI? Inboxed keeps your emails private and adds intelligent features — no server-side processing.",
-      canonical: "https://inboxed.email/compare/proton-mail",
+      canonical: "https://inboxed.email/compare/proton-mail/",
     },
     h1: "Inboxed vs. Proton Mail",
     intro: "Proton Mail is the gold standard for encrypted email. But encryption alone isn't intelligence. Inboxed adds local AI to the privacy-first equation.",
@@ -420,7 +420,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Mimestream Alternative with AI & Multi-Account IMAP | Inboxed",
       description: "Mimestream only supports Gmail. Inboxed works with any IMAP account and adds local AI intelligence — summaries, smart replies, and semantic search.",
-      canonical: "https://inboxed.email/compare/mimestream",
+      canonical: "https://inboxed.email/compare/mimestream/",
     },
     h1: "Inboxed vs. Mimestream",
     intro: "Mimestream is a beautifully crafted native Mac email client. But it only works with Gmail. Inboxed supports any IMAP account and adds local AI that Mimestream doesn't have.",
@@ -448,7 +448,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Notion Mail Alternative with Private Local AI | Inboxed",
       description: "Notion Mail sends your emails to Notion's cloud for AI features. Inboxed runs AI 100% on your Mac — same intelligence, complete privacy.",
-      canonical: "https://inboxed.email/compare/notion-mail",
+      canonical: "https://inboxed.email/compare/notion-mail/",
     },
     h1: "Inboxed vs. Notion Mail",
     intro: "Notion Mail brings Notion's organizational philosophy to email. But like all Notion products, it's cloud-first. Inboxed gives you smart email without the cloud dependency.",
@@ -476,7 +476,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Canary Mail Alternative with True Local AI | Inboxed",
       description: "Canary Mail claims AI features, but they're cloud-powered. Inboxed runs AI 100% on your Mac — genuine local intelligence for email.",
-      canonical: "https://inboxed.email/compare/canary-mail",
+      canonical: "https://inboxed.email/compare/canary-mail/",
     },
     h1: "Inboxed vs. Canary Mail",
     intro: "Canary Mail markets itself as a private AI email client. But its AI features rely on cloud APIs. Inboxed is the real deal — 100% local AI.",
@@ -503,7 +503,7 @@ const _comparisons: ComparisonData[] = [
     seo: {
       title: "Edison Mail Alternative (No Data Harvesting) | Inboxed",
       description: "Edison Mail was caught selling user email data. Inboxed is the private alternative — local AI that never phones home.",
-      canonical: "https://inboxed.email/compare/edison-mail",
+      canonical: "https://inboxed.email/compare/edison-mail/",
     },
     h1: "Inboxed vs. Edison Mail",
     intro: "Edison Mail is a popular free email client. But \"free\" comes at a cost — Edison has been caught monetizing user email data. Inboxed is genuinely free and genuinely private.",
@@ -540,7 +540,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Developers (2026) | Inboxed",
       description: "A fast, keyboard-driven email client built for developers. Local AI, Rust-powered, no Electron bloat. Inboxed is the developer's email.",
-      canonical: "https://inboxed.email/best-email-for/developers",
+      canonical: "https://inboxed.email/best-email-for/developers/",
     },
     h1: "The Best Email Client for Developers",
     intro: "You spend your day in terminals and IDEs. Your email client should feel just as fast and intentional. Inboxed is built with Rust, runs local AI, and respects your workflow.",
@@ -564,7 +564,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Lawyers & Legal Teams (2026) | Inboxed",
       description: "Client confidentiality meets AI productivity. Inboxed processes emails locally on your Mac — no cloud servers see your privileged communications.",
-      canonical: "https://inboxed.email/best-email-for/lawyers",
+      canonical: "https://inboxed.email/best-email-for/lawyers/",
     },
     h1: "The Best Email Client for Lawyers",
     intro: "Attorney-client privilege doesn't end at your inbox. Inboxed runs AI entirely on your Mac, so privileged communications never touch a cloud server.",
@@ -588,7 +588,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Journalists (2026) | Inboxed",
       description: "Protect your sources. Inboxed runs AI locally — your email communications never pass through cloud servers. Source protection starts at your inbox.",
-      canonical: "https://inboxed.email/best-email-for/journalists",
+      canonical: "https://inboxed.email/best-email-for/journalists/",
     },
     h1: "The Best Email Client for Journalists",
     intro: "Your sources trust you with sensitive information. That trust extends to your email client. Inboxed ensures your communications stay on your device.",
@@ -612,7 +612,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Executives & CEOs (2026) | Inboxed",
       description: "Executive communications are high-stakes. Inboxed gives you AI-powered email management that runs privately on your Mac — no cloud exposure.",
-      canonical: "https://inboxed.email/best-email-for/executives",
+      canonical: "https://inboxed.email/best-email-for/executives/",
     },
     h1: "The Best Email Client for Executives",
     intro: "Every email you send carries weight. Board communications, M&A discussions, investor updates — they deserve an email client that treats them with the gravity they require.",
@@ -636,7 +636,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Freelancers (2026) | Inboxed",
       description: "Manage client communications efficiently with Inboxed — the free, AI-powered email client that helps freelancers respond faster and stay organized.",
-      canonical: "https://inboxed.email/best-email-for/freelancers",
+      canonical: "https://inboxed.email/best-email-for/freelancers/",
     },
     h1: "The Best Email Client for Freelancers",
     intro: "Client emails are your business lifeline. Inboxed helps you respond faster, stay organized, and maintain professionalism — all for free.",
@@ -660,7 +660,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Startup Founders (2026) | Inboxed",
       description: "Investor updates, candidate emails, customer feedback — all processed privately on your Mac with AI. Inboxed is built for founder-speed.",
-      canonical: "https://inboxed.email/best-email-for/startup-founders",
+      canonical: "https://inboxed.email/best-email-for/startup-founders/",
     },
     h1: "The Best Email Client for Startup Founders",
     intro: "You're moving fast. Investor outreach, hiring pipelines, customer feedback — your inbox is your command center. Inboxed makes it intelligent without compromising speed or privacy.",
@@ -684,7 +684,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Privacy (2026) | Inboxed",
       description: "The most private email client with AI. Inboxed runs all intelligence locally on your Mac — zero cloud processing, zero data sharing, zero tracking.",
-      canonical: "https://inboxed.email/best-email-for/privacy-focused",
+      canonical: "https://inboxed.email/best-email-for/privacy-focused/",
     },
     h1: "The Most Private Email Client with AI",
     intro: "You shouldn't have to choose between privacy and intelligence. Inboxed runs AI entirely on your Mac, so you get smart email without sacrificing a single byte of privacy.",
@@ -708,7 +708,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Remote Workers (2026) | Inboxed",
       description: "Work from anywhere with full AI email intelligence — even offline. Inboxed runs locally on your Mac, no internet needed for smart features.",
-      canonical: "https://inboxed.email/best-email-for/remote-workers",
+      canonical: "https://inboxed.email/best-email-for/remote-workers/",
     },
     h1: "The Best Email Client for Remote Workers",
     intro: "Coffee shops, co-working spaces, airport lounges — remote work means unreliable internet. Inboxed's local AI works everywhere, with or without a connection.",
@@ -732,7 +732,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Free Email Client for Students (2026) | Inboxed",
       description: "A free, fast email client for students. Inboxed runs on macOS with local AI — perfect for managing university, internship, and personal email.",
-      canonical: "https://inboxed.email/best-email-for/students",
+      canonical: "https://inboxed.email/best-email-for/students/",
     },
     h1: "The Best Email Client for Students",
     intro: "Between professors, internship applications, and club emails, your inbox is busier than you'd think. Inboxed helps you stay on top of it — completely free.",
@@ -756,7 +756,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Consultants (2026) | Inboxed",
       description: "Manage multiple client engagements privately. Inboxed's local AI keeps client communications confidential while helping you respond faster.",
-      canonical: "https://inboxed.email/best-email-for/consultants",
+      canonical: "https://inboxed.email/best-email-for/consultants/",
     },
     h1: "The Best Email Client for Consultants",
     intro: "Every client engagement means a new stream of confidential communications. Inboxed helps you manage them all with AI that never leaves your Mac.",
@@ -780,7 +780,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Healthcare & HIPAA (2026) | Inboxed",
       description: "HIPAA-friendly email with AI that never leaves your device. Inboxed processes patient communications locally on your Mac — zero cloud exposure.",
-      canonical: "https://inboxed.email/best-email-for/healthcare",
+      canonical: "https://inboxed.email/best-email-for/healthcare/",
     },
     h1: "The Best Email Client for Healthcare Professionals",
     intro: "Patient data is sacred. HIPAA demands it. But most email AI features send your messages to third-party cloud servers. Inboxed keeps everything on your Mac.",
@@ -804,7 +804,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Financial Advisors (2026) | Inboxed",
       description: "Client portfolios and financial discussions deserve private AI. Inboxed processes all email intelligence locally — no cloud servers see your client data.",
-      canonical: "https://inboxed.email/best-email-for/financial-advisors",
+      canonical: "https://inboxed.email/best-email-for/financial-advisors/",
     },
     h1: "The Best Email Client for Financial Advisors",
     intro: "Your clients trust you with their financial futures. That trust extends to how you handle their communications. Inboxed keeps AI-powered email private.",
@@ -828,7 +828,7 @@ const _useCases: UseCaseData[] = [
     seo: {
       title: "Best Email Client for Researchers & Academics (2026) | Inboxed",
       description: "Manage peer reviews, grant communications, and collaboration emails with AI that respects academic confidentiality. 100% on-device processing.",
-      canonical: "https://inboxed.email/best-email-for/researchers",
+      canonical: "https://inboxed.email/best-email-for/researchers/",
     },
     h1: "The Best Email Client for Researchers & Academics",
     intro: "Peer review communications, grant discussions, and research collaborations deserve privacy. Inboxed adds AI intelligence without compromising academic confidentiality.",
@@ -862,7 +862,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Superhuman Alternatives in 2026 (Free & Paid) | Inboxed",
       description: "Looking for Superhuman alternatives? Compare the best email clients that offer similar speed and features — including free options with local AI.",
-      canonical: "https://inboxed.email/alternatives/superhuman-alternatives",
+      canonical: "https://inboxed.email/alternatives/superhuman-alternatives/",
     },
     h1: "Best Superhuman Alternatives in 2026",
     intro: "Superhuman charges $30/month for a fast email experience. Here are the best alternatives that deliver similar speed and intelligence — many for free.",
@@ -881,7 +881,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Gmail Alternatives in 2026 (Private & Ad-Free) | Inboxed",
       description: "Stop Gmail from scanning your emails. These Gmail alternatives offer better privacy, local AI features, and no ad-driven data mining.",
-      canonical: "https://inboxed.email/alternatives/gmail-alternatives",
+      canonical: "https://inboxed.email/alternatives/gmail-alternatives/",
     },
     h1: "Best Gmail Alternatives in 2026",
     intro: "Gmail scans your emails to serve targeted ads. If you're ready for privacy without losing smart features, these alternatives deliver.",
@@ -900,7 +900,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Outlook Alternatives for Mac in 2026 | Inboxed",
       description: "Tired of Outlook's bloat on Mac? These alternatives offer native performance, modern design, and AI features without a Microsoft 365 subscription.",
-      canonical: "https://inboxed.email/alternatives/outlook-alternatives",
+      canonical: "https://inboxed.email/alternatives/outlook-alternatives/",
     },
     h1: "Best Outlook Alternatives for Mac in 2026",
     intro: "Outlook on Mac is a bloated port of its Windows counterpart. If you want a native email experience with modern AI, these alternatives are worth considering.",
@@ -919,7 +919,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Apple Mail Alternatives with AI (2026) | Inboxed",
       description: "Love Apple Mail's privacy but want AI features? These alternatives add intelligence to your Mac email without compromising on privacy.",
-      canonical: "https://inboxed.email/alternatives/apple-mail-alternatives",
+      canonical: "https://inboxed.email/alternatives/apple-mail-alternatives/",
     },
     h1: "Best Apple Mail Alternatives in 2026",
     intro: "Apple Mail is reliable and private — but it hasn't evolved to include AI features. These alternatives add intelligence while maintaining what you love about Apple Mail.",
@@ -938,7 +938,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best HEY Email Alternatives in 2026 (No Lock-in) | Inboxed",
       description: "Love HEY's email philosophy but not the $99/year lock-in? These alternatives offer similar workflows with more freedom and better AI.",
-      canonical: "https://inboxed.email/alternatives/hey-alternatives",
+      canonical: "https://inboxed.email/alternatives/hey-alternatives/",
     },
     h1: "Best HEY Email Alternatives in 2026",
     intro: "HEY reimagined email workflows but locked you into a $99/year proprietary ecosystem. These alternatives offer fresh thinking without the lock-in.",
@@ -957,7 +957,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Spark Email Alternatives in 2026 (Private AI) | Inboxed",
       description: "Concerned about Spark storing your emails? These alternatives offer the same smart features with better privacy — including free options.",
-      canonical: "https://inboxed.email/alternatives/spark-alternatives",
+      canonical: "https://inboxed.email/alternatives/spark-alternatives/",
     },
     h1: "Best Spark Email Alternatives in 2026",
     intro: "Spark is a beautiful email client — but it stores your emails on Readdle's servers. If privacy matters to you, these alternatives deliver smart email without the cloud dependency.",
@@ -976,7 +976,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Thunderbird Alternatives in 2026 (With AI) | Inboxed",
       description: "Love Thunderbird's privacy but want modern AI features? These alternatives offer local intelligence without sacrificing the open-source ethos.",
-      canonical: "https://inboxed.email/alternatives/thunderbird-alternatives",
+      canonical: "https://inboxed.email/alternatives/thunderbird-alternatives/",
     },
     h1: "Best Thunderbird Alternatives in 2026",
     intro: "Thunderbird has been the privacy-conscious email user's choice for decades. But it's showing its age. These modern alternatives add AI intelligence while respecting your privacy.",
@@ -995,7 +995,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Proton Mail Alternatives in 2026 (Privacy + AI) | Inboxed",
       description: "Want Proton Mail's privacy with modern AI features? These alternatives offer intelligent email without compromising on data protection.",
-      canonical: "https://inboxed.email/alternatives/proton-mail-alternatives",
+      canonical: "https://inboxed.email/alternatives/proton-mail-alternatives/",
     },
     h1: "Best Proton Mail Alternatives in 2026",
     intro: "Proton Mail set the gold standard for email privacy. But it deliberately avoids AI features because they can't do them without reading your emails on their servers. These alternatives solve that paradox.",
@@ -1014,7 +1014,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Canary Mail Alternatives in 2026 (True Local AI) | Inboxed",
       description: "Canary Mail's AI features are cloud-powered despite privacy marketing. These alternatives offer genuine on-device AI for email.",
-      canonical: "https://inboxed.email/alternatives/canary-mail-alternatives",
+      canonical: "https://inboxed.email/alternatives/canary-mail-alternatives/",
     },
     h1: "Best Canary Mail Alternatives in 2026",
     intro: "Canary Mail markets itself as a private AI email client. But its AI features send data to cloud APIs for processing. If you want genuine local AI, these alternatives deliver.",
@@ -1033,7 +1033,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Edison Mail Alternatives in 2026 (No Data Selling) | Inboxed",
       description: "Edison Mail was caught selling user email data. These private alternatives give you smart email features without the data harvesting.",
-      canonical: "https://inboxed.email/alternatives/edison-mail-alternatives",
+      canonical: "https://inboxed.email/alternatives/edison-mail-alternatives/",
     },
     h1: "Best Edison Mail Alternatives in 2026",
     intro: "Edison Mail offers a free, AI-powered email experience. The catch? They monetize your email data. If you want smart email without being the product, switch to one of these alternatives.",
@@ -1052,7 +1052,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Mimestream Alternatives in 2026 (Multi-Provider + AI) | Inboxed",
       description: "Mimestream only supports Gmail. These alternatives work with any email provider and add AI intelligence that Mimestream lacks.",
-      canonical: "https://inboxed.email/alternatives/mimestream-alternatives",
+      canonical: "https://inboxed.email/alternatives/mimestream-alternatives/",
     },
     h1: "Best Mimestream Alternatives in 2026",
     intro: "Mimestream is a gorgeous Mac email client — but it's Gmail-only with no AI features. If you need multi-provider support or AI intelligence, these alternatives deliver.",
@@ -1071,7 +1071,7 @@ const _alternatives: AlternativesData[] = [
     seo: {
       title: "Best Notion Mail Alternatives in 2026 (Private AI) | Inboxed",
       description: "Notion Mail is cloud-first. These alternatives offer smart email organization with better privacy and on-device AI processing.",
-      canonical: "https://inboxed.email/alternatives/notion-mail-alternatives",
+      canonical: "https://inboxed.email/alternatives/notion-mail-alternatives/",
     },
     h1: "Best Notion Mail Alternatives in 2026",
     intro: "Notion Mail brings Notion's organizational DNA to email, but it's cloud-first with AI processing on Notion's servers. These alternatives keep your intelligence local.",
